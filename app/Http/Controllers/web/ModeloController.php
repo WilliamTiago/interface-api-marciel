@@ -5,7 +5,7 @@ namespace App\Http\Controllers\web;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
-class MarcaController extends Controller
+class ModeloController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class MarcaController extends Controller
      */
     public function index()
     {
-        return View('web/ConsultaMarcaView');
+        return View('web/ConsultaModeloView');
     }
 
     /**
@@ -24,7 +24,7 @@ class MarcaController extends Controller
      */
     public function create()
     {
-        return View('web/ManutencaoMarcaView');
+        return View('web/ManutencaoModeloView');
     }
 
     /**
@@ -35,7 +35,7 @@ class MarcaController extends Controller
      */
     public function show($id)
     {
-        return View('web/ManutencaoMarcaView')->with('parms' ,['acao'=>'show','id'=>$id]);;
+        return View('web/ManutencaoModeloView')->with('parms' ,['acao'=>'show','id'=>$id]);;
     }
 
     /**
@@ -46,6 +46,6 @@ class MarcaController extends Controller
      */
     public function edit($id)
     {
-        return View('web/ManutencaoMarcaView')->with('parms' ,['acao'=>'edit','id'=>$id]);;
+        return View('web/ManutencaoModeloView')->with('parms' ,['acao'=>'edit','id'=>$id]);;
     }
 }

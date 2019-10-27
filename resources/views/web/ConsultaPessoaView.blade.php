@@ -17,25 +17,25 @@
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
   <div class="card-header py-3">
-  <a href="pessoa/create" class="btn btn-primary btn-icon-split m-1">
+  <a id="incluir" href="pessoa/create" class="btn btn-primary btn-icon-split m-1">
     <span class="icon text-white-50">
       <i class="fas fa-flag"></i>
     </span>
     <span class="text">Incluir</span>
   </a>
-  <a href="pessoa/edit/1" class="btn btn-primary btn-icon-split m-1">
+  <a id="alterar" href="pessoa/edit" class="btn btn-primary btn-icon-split m-1 disabled">
     <span class="icon text-white-50">
       <i class="fas fa-flag"></i>
     </span>
     <span class="text">Editar</span>
   </a>
-  <a href="pessoa/show/1" class="btn btn-primary btn-icon-split m-1">
+  <a id="visualizar" href="pessoa/show" class="btn btn-primary btn-icon-split m-1 disabled">
     <span class="icon text-white-50">
       <i class="fas fa-flag"></i>
     </span>
     <span class="text">Visualizar</span>
   </a>
-  <button id="excluir" class="btn btn-danger btn-icon-split m-1">
+  <button id="excluir" class="btn btn-danger btn-icon-split m-1 disabled">
     <span class="icon text-white-50">
       <i class="fas fa-flag"></i>
     </span>

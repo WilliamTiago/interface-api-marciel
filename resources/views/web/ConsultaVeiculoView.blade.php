@@ -1,6 +1,6 @@
 @extends('web/HomeView')
 
-@section('title', 'Consulta Marca')
+@section('title', 'Consulta Veiculo')
 
 @section('stylesheets')
     
@@ -12,24 +12,24 @@
 @endcomponent
 
 <!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800">Consulta de Marcas</h1>
+<h1 class="h3 mb-2 text-gray-800">Consulta de Veiculos</h1>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
   <div class="card-header py-3">
-  <a id="incluir" href="marca/create" class="btn btn-primary btn-icon-split m-1">
+  <a id="incluir" href="veiculo/create" class="btn btn-primary btn-icon-split m-1">
     <span class="icon text-white-50">
       <i class="fas fa-flag"></i>
     </span>
     <span class="text">Incluir</span>
   </a>
-  <a id="alterar" href="marca/edit" class="btn btn-primary btn-icon-split m-1 disabled">
+  <a id="alterar" href="veiculo/edit" class="btn btn-primary btn-icon-split m-1 disabled">
     <span class="icon text-white-50">
       <i class="fas fa-flag"></i>
     </span>
     <span class="text">Editar</span>
   </a>
-  <a id="visualizar" href="marca/show" class="btn btn-primary btn-icon-split m-1 disabled">
+  <a id="visualizar" href="veiculo/show" class="btn btn-primary btn-icon-split m-1 disabled">
     <span class="icon text-white-50">
       <i class="fas fa-flag"></i>
     </span>
@@ -44,14 +44,18 @@
   </div>
   <div class="card-body">
     <div class="table-responsive">
-      <table class="table table-bordered" id="consulta-marca" width="100%" cellspacing="0">
+      <table class="table table-bordered" id="consulta-veiculo" width="100%" cellspacing="0">
         <thead>
           <tr>
             <th>Codigo</th>
-            <th>Nome</th>
+            <th>Ano</th>
+            <th>Cor</th>
+            <th>KM</th>
+            <th>Modelo</th>
+            <th>Valor Diária</th>
+            <th>Situação</th>
           </tr>
         </thead>
-        
       </table>
     </div>
   </div>
@@ -61,7 +65,7 @@
 
 @section('scripts')
 
-<script src="/js/marca.js"></script>
+<script src="/js/veiculo.js"></script>
 
 @endsection
 

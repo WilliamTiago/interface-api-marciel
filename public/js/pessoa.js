@@ -12,11 +12,11 @@ $(document).ready(async function () {
     
     //Carrega dados e configurações da tabela "consulta-usuario" ao carregar página
     if ($('#consulta-pessoa')) {
-        carregaConsulta('consulta-pessoa', 'Pessoa', 'pessoa');
+        carregaConsulta('consulta-pessoa', 'pessoa');
     }
     
     $(document).on("click", '#excluirConfirmar', function () {
-        executaExclusao('consulta-pessoa', 'Pessoa');
+        executaExclusao('consulta-pessoa', 'pessoa');
     });
     
     //// Fim do controle da tela de consulta ////
@@ -28,23 +28,23 @@ $(document).ready(async function () {
     }
 
     //Chama processo a ser executado conforme a ação da tela de manutenção
-    $('#confirmar').click(async function (e) {
-        limpaCpfCnpj();
-        $(this).prop('disabled', true);
+    $("#form").submit(async function(e){
+        e.preventDefault();
+        $('#confirmar').prop('disabled', true);
         if (acaoManutencao == "edit") {
-            urlApi = '/Pessoa/' + $('#pescodigo').val();
+            urlApi = '/pessoa/' + $('#pescodigo').val();
             campos = ['pesnome','pesemail','pestelefone','pescpfcnpj'];
             await executaAlteracao(campos, urlApi);
         } else if (acaoManutencao == "create") {
-            urlApi = '/Pessoa';
+            urlApi = '/pessoa';
             campos = ['pesnome','pesemail','pestelefone','pescpfcnpj'];
             await executaInsercao(campos, urlApi);
         }
-        $(this).prop('disabled', false);
+        $('#confirmar').prop('disabled', false);
     });
     
     //Define os campos como obrigatório
-    $('input:text, input[type="number"]').attr("required", "true");
+    $('#pesnome, #pescpfcnpj').attr("required", "true");
 
     //Define por defaulr a mascara de CPF para o campo "psocpfcnpj"
     if(typeof $('#pescpfcnpj')[0] != "undefined"){
@@ -105,7 +105,7 @@ async function buscaDadosManutencao(acao, id) {
 
     } 
     try {
-        result = await api.get('Pessoa/' + id);
+        result = await api.get('pessoa/' + id);
         pessoa = result.data;
         $('#pescodigo').val(pessoa.pescodigo);
         $('#pesnome').val(pessoa.pesnome);
@@ -117,6 +117,13 @@ async function buscaDadosManutencao(acao, id) {
     }
 }
 
+/**
+ * Muda o tipo de mascara para CPF ou CNPJ 
+ * conforme tipo de pessoa selecionada
+ * @param string acao
+ * @param string id
+ * @returns {undefined}
+ */
 function onChangeTipoPessoa() {
     if ($('#psotipo').val() == 1) {
           $('#pescpfcnpj').val('');
@@ -125,15 +132,6 @@ function onChangeTipoPessoa() {
           $('#pescpfcnpj').val('');
           $('#pescpfcnpj').mask('00.000.000/0000-00', {reverse: true});
     }
-}
-
-function limpaCpfCnpj(){
-    campo = $('#pescpfcnpj').val();
-    campo = campo.replace(".", "");
-    campo = campo.replace(".", "");
-    campo = campo.replace("-", "");
-    campo = campo.replace("/", "");
-    $('#pescpfcnpj').val(campo);campo;
 }
 
 ///////////////////////////////// FIM MÉTODOS //////////////////////////////////

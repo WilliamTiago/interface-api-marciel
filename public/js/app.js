@@ -143,41 +143,6 @@ function trataBtnCRUD(botao, habilita) {
     }
 }
 
-/**
- * Carrega os botões de CRUD da consulta
- * @param string rota
- */
-function carregaButtons(rota) {
-    if (!$("#divControls")[0]) {
-        return;
-    }
-
-    $("#divControls")[0].innerHTML =
-            '<a href="http://bobwaiter.com/web/' + rota + '/create" class="btn btn-primary btn-icon-split btn-sm">' +
-            '<span class="icon text-white-50">' +
-            '<i class="fas fa-plus-square"></i>' +
-            '</span>' +
-            '<span class="text">Incluir</span>' +
-            '</a>' +
-            '<a href="http://bobwaiter.com/web/' + rota + '/edit" id="alterar" class="btn btn-primary btn-icon-split btn-sm disabled">' +
-            '<span class="icon text-white-50">' +
-            '<i class="fas fa-edit"></i>' +
-            '</span>' +
-            '<span class="text">Alterar</span>' +
-            '</a>' +
-            '<button id="excluir" name="excluir" class="btn btn-primary btn-icon-split btn-sm disabled">' +
-            '<span class="icon text-white-50">' +
-            '<i class="fas fa-trash-alt"></i>' +
-            '</span>' +
-            '<span class="text">Excluir</span>' +
-            '</button>' +
-            '<a href="http://bobwaiter.com/web/' + rota + '/show" id="visualizar" class="btn btn-primary btn-icon-split btn-sm disabled">' +
-            '<span class="icon text-white-50">' +
-            '<i class="fas fa-search"></i>' +
-            '</span>' +
-            '<span class="text">Visualizar</span>' +
-            '</a>';
-}
 
 /**
  * Seta as configurações do Data Table
@@ -233,7 +198,7 @@ function loadTableSettings(
  * Carrega o botão de selecionar do externo
  */
 function carregaButtonsExterno() {
-    let div = $(".divControlsExterno");
+    let div = $(".section-botao-selecionar-externo");
 
     //Carrega botão "Selecionar" para cada externo
     for (x in div) {
@@ -329,12 +294,11 @@ function executaExclusao(tabela, rotaApi, rotaWEB) {
  * @param string rotaApi
  * @param string rotaWeb
  */
-async function carregaConsulta(tabela, rotaApi, rotaWeb) {
+async function carregaConsulta(tabela, rotaApi) {
     let result = await api.get(rotaApi);
     let data = result.data;
     data = trataDados(tabela, data);
     $('#' + tabela).DataTable(loadTableSettings(data['source'], data['columns']));
-    carregaButtons(rotaWeb);
 }
 
 /**
@@ -350,11 +314,10 @@ async function carregaExterno(tabela, rotaApi, modal, iniciado) {
         if (!iniciado) {
             try {
                 let result = await api.get(rotaApi);
-                let data = result.data.data;
+                let data = result.data;
                 data = trataDados(tabela, data);
-                $('#' + tabela).DataTable(loadTableSettings(data['source'], data['columns'], 'single', true, 'divControlsExterno '));
+                $('#' + tabela).DataTable(loadTableSettings(data['source'], data['columns'], 'single', false, 'divControlsExterno '));
                 carregaButtonsExterno();
-                ModalPessoaExternoIniciado = true;
             } catch (err) {
                 toastr['error'](Object.values(err.response.data.errors)[0]);
             }
@@ -364,6 +327,7 @@ async function carregaExterno(tabela, rotaApi, modal, iniciado) {
     $('#' + modal).show();
     //Seta currentModal com o modal atual
     currentModal = modal;
+    return true;
 }
 
 /**
@@ -401,14 +365,17 @@ function trataDados(tabela, data) {
         case "consulta-pessoa":
             dados = trataDadosPessoa(data);
             break;
-        case "consulta-usuario":
-            dados = trataDadosUsuario(data);
+        case "consulta-marca":
+            dados = trataDadosMarca(data);
             break;
-        case "consulta-usuario-categoria":
-            dados = trataDadosUsuarioCategoria(data);
+        case "consulta-modelo":
+            dados = trataDadosModelo(data);
             break;
-        case "consulta-estabelecimento-categoria":
-            dados = trataDadosEstabelecimentoCategoria(data);
+        case "consulta-veiculo":
+            dados = trataDadosVeiculo(data);
+            break;
+        case "consulta-aluguel":
+            dados = trataDadosAluguel(data);
             break;
     }
     return dados;

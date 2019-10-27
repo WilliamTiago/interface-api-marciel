@@ -48,22 +48,22 @@ Route::group([
     Route::get('pessoa/edit/{id}'   , 'PessoaController@edit')->name('pessoa.edit');
     Route::get('pessoa/show/{id}'   , 'PessoaController@show')->name('pessoa.show');
     //Aluguel
-    Route::get('aluguel'             , 'Aluguel@index')->name('aluguel.index');
-    Route::get('aluguel/create'      , 'Aluguel@create')->name('aluguel.create');
-    Route::get('aluguel/edit/{id}'   , 'Aluguel@edit')->name('aluguel.edit');
-    Route::get('aluguel/show/{id}'   , 'Aluguel@show')->name('aluguel.show');
+    Route::get('aluguel'             , 'AluguelController@index')->name('aluguel.index');
+    Route::get('aluguel/create'      , 'AluguelController@create')->name('aluguel.create');
+    Route::get('aluguel/edit/{id}'   , 'AluguelController@edit')->name('aluguel.edit');
+    Route::get('aluguel/show/{id}'   , 'AluguelController@show')->name('aluguel.show');
     //Marca
-    Route::get('marca'             , 'Marca@index')->name('marca.index');
-    Route::get('marca/create'      , 'Marca@create')->name('marca.create');
-    Route::get('marca/edit/{id}'   , 'Marca@edit')->name('marca.edit');
-    Route::get('marca/show/{id}'   , 'Marca@show')->name('marca.show');
+    Route::get('marca'             , 'MarcaController@index')->name('marca.index');
+    Route::get('marca/create'      , 'MarcaController@create')->name('marca.create');
+    Route::get('marca/edit/{id}'   , 'MarcaController@edit')->name('marca.edit');
+    Route::get('marca/show/{id}'   , 'MarcaController@show')->name('marca.show');
     //Modelo
-    Route::get('modelo'             , 'Modelo@index')->name('modelo.index');
-    Route::get('modelo/create'      , 'Modelo@create')->name('modelo.create');
-    Route::get('modelo/edit/{id}'   , 'Modelo@edit')->name('modelo.edit');
-    Route::get('modelo/show/{id}'   , 'Modelo@show')->name('modelo.show');
+    Route::get('modelo'             , 'ModeloController@index')->name('modelo.index');
+    Route::get('modelo/create'      , 'ModeloController@create')->name('modelo.create');
+    Route::get('modelo/edit/{id}'   , 'ModeloController@edit')->name('modelo.edit');
+    Route::get('modelo/show/{id}'   , 'ModeloController@show')->name('modelo.show');
     //Veiculo
-    Route::get('veiculo'             , 'Veiculo@index')->name('veiculo.index');
+    Route::get('veiculo'             , 'VeiculoController@index')->name('veiculo.index');
     Route::get('veiculo/create'      , 'VeiculoController@create')->name('veiculo.create');
     Route::get('veiculo/edit/{id}'   , 'VeiculoController@edit')->name('veiculo.edit');
     Route::get('veiculo/show/{id}'   , 'VeiculoController@show')->name('veiculo.show');

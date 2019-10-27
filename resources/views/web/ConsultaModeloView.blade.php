@@ -1,6 +1,6 @@
 @extends('web/HomeView')
 
-@section('title', 'Consulta Marca')
+@section('title', 'Consulta Modelo')
 
 @section('stylesheets')
     
@@ -12,24 +12,24 @@
 @endcomponent
 
 <!-- Page Heading -->
-<h1 class="h3 mb-2 text-gray-800">Consulta de Marcas</h1>
+<h1 class="h3 mb-2 text-gray-800">Consulta de Modelos</h1>
 
 <!-- DataTales Example -->
 <div class="card shadow mb-4">
   <div class="card-header py-3">
-  <a id="incluir" href="marca/create" class="btn btn-primary btn-icon-split m-1">
+  <a id="incluir" href="modelo/create" class="btn btn-primary btn-icon-split m-1">
     <span class="icon text-white-50">
       <i class="fas fa-flag"></i>
     </span>
     <span class="text">Incluir</span>
   </a>
-  <a id="alterar" href="marca/edit" class="btn btn-primary btn-icon-split m-1 disabled">
+  <a id="alterar" href="modelo/edit" class="btn btn-primary btn-icon-split m-1 disabled">
     <span class="icon text-white-50">
       <i class="fas fa-flag"></i>
     </span>
     <span class="text">Editar</span>
   </a>
-  <a id="visualizar" href="marca/show" class="btn btn-primary btn-icon-split m-1 disabled">
+  <a id="visualizar" href="modelo/show" class="btn btn-primary btn-icon-split m-1 disabled">
     <span class="icon text-white-50">
       <i class="fas fa-flag"></i>
     </span>
@@ -44,11 +44,12 @@
   </div>
   <div class="card-body">
     <div class="table-responsive">
-      <table class="table table-bordered" id="consulta-marca" width="100%" cellspacing="0">
+      <table class="table table-bordered" id="consulta-modelo" width="100%" cellspacing="0">
         <thead>
           <tr>
             <th>Codigo</th>
             <th>Nome</th>
+            <th>Marca</th>
           </tr>
         </thead>
         
@@ -61,7 +62,7 @@
 
 @section('scripts')
 
-<script src="/js/marca.js"></script>
+<script src="/js/modelo.js"></script>
 
 @endsection
 

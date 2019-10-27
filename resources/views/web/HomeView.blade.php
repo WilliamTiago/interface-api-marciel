@@ -46,57 +46,37 @@
       <!-- Divider -->
       <hr class="sidebar-divider my-0">
 
-      <!-- Nav Item - Pages Collapse Menu -->
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages" aria-expanded="true" aria-controls="collapsePages">
-          <i class="fas fa-fw fa-folder"></i>
-          <span>Pages</span>
-        </a>
-        <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-          <div class="bg-white py-2 collapse-inner rounded">
-            <h6 class="collapse-header">Login Screens:</h6>
-            <a class="collapse-item" href="login.html">Login</a>
-            <a class="collapse-item" href="register.html">Register</a>
-            <a class="collapse-item" href="forgot-password.html">Forgot Password</a>
-            <div class="collapse-divider"></div>
-            <h6 class="collapse-header">Other Pages:</h6>
-            <a class="collapse-item" href="404.html">404 Page</a>
-            <a class="collapse-item" href="blank.html">Blank Page</a>
-          </div>
-        </div>
-      </li>
-
       <!-- Nav Item - Charts -->
       <li class="nav-item">
-        <a class="nav-link" href="pessoa">
+        <a class="nav-link" href="{{ url('web/pessoa') }}">
           <i class="fas fa-fw fa-users"></i>
           <span>Pessoas</span></a>
       </li>
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="aluguel">
+        <a class="nav-link" href="{{ url('web/aluguel') }}">
         <i class="fas fa-handshake"></i>
           <span>Alugueis</span></a>
       </li>
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="marca">
+        <a class="nav-link" href="{{ url('web/marca') }}">
         <i class="far fa-copyright"></i>
           <span>Marcas</span></a>
       </li>
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="modelo">
+        <a class="nav-link" href="{{ url('web/modelo') }}">
         <i class="fas fa-object-group"></i>
           <span>Modelos</span></a>
       </li>
 
       <!-- Nav Item - Tables -->
       <li class="nav-item">
-        <a class="nav-link" href="veiculo">
+        <a class="nav-link" href="{{ url('web/veiculo') }}">
         <i class="fas fa-car"></i>
           <span>Veiculos</span></a>
       </li>
