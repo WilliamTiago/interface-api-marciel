@@ -25,19 +25,19 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="aluqtddiarias" class="col-sm-3 col-md-2 col-lg-2 col-xl-1 col-form-label-sm label-right">Nome:</label>
+                <label for="aluqtddiarias" class="col-sm-3 col-md-2 col-lg-2 col-xl-1 col-form-label-sm label-right">Diarias:</label>
                 <div class="col-sm-9 col-md-9 col-lg-7 col-xl-5">
                     <input id="aluqtddiarias" name="aluqtddiarias" type="number" class="form-control" value="">
                 </div>
             </div>
             <div class="form-group row">
-                <label for="aludataretirada" class="col-sm-3 col-md-2 col-lg-2 col-xl-1 col-form-label-sm label-right">Nome:</label>
+                <label for="aludataretirada" class="col-sm-3 col-md-2 col-lg-2 col-xl-1 col-form-label-sm label-right">Data Retirada:</label>
                 <div class="col-sm-9 col-md-9 col-lg-7 col-xl-5">
-                    <input id="aludataretirada" name="aludataretirada" type="data" class="form-control" value="">
+                    <input id="aludataretirada" name="aludataretirada" type="datetime" class="form-control" value="">
                 </div>
             </div>
             <div class="form-group row">
-                <label for="pescodigo" class="col-sm-3 col-md-2 col-lg-2 col-xl-1 col-form-label-sm label-right">Marca:</label>
+                <label for="pescodigo" class="col-sm-3 col-md-2 col-lg-2 col-xl-1 col-form-label-sm label-right">Pessoa:</label>
                 <div class="col-sm-2 col-xl-1">
                     <input id="pescodigo" name="pescodigo" type="number" class="form-control input-small" value="">
                 </div>
@@ -53,7 +53,7 @@
                 </div>
             </div>
             <div class="form-group row">
-                <label for="veicodigo" class="col-sm-3 col-md-2 col-lg-2 col-xl-1 col-form-label-sm label-right">Marca:</label>
+                <label for="veicodigo" class="col-sm-3 col-md-2 col-lg-2 col-xl-1 col-form-label-sm label-right">Veiculo:</label>
                 <div class="col-sm-2 col-xl-1">
                     <input id="veicodigo" name="veicodigo" type="number" class="form-control input-small" value="">
                 </div>
@@ -65,7 +65,7 @@
                     </a>
                 </div>
                 <div class="col-sm-6 col-lg-4">
-                    <input id="modcodigo" name="modcodigo" type="text" class="form-control input-small" value="">
+                    <input id="veiano" name="veiano" type="text" class="form-control input-small" value="">
                 </div>
             </div>
         </div>

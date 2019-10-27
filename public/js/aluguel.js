@@ -34,7 +34,7 @@ $(document).ready(async function () {
         //Carrega dados e configurações da tabela externa de "consulta-pessoa" ao clicar na 
         //"lupinha" de consulta pessoa
         $('#consultaPessoa').click(async function () {
-            ModalPessoaExternoIniciado = carregaExterno('consulta-pessoa', 'pessoa', 'modalConsultaPessoa', ModalaPessoaExternoIniciado);
+            ModalPessoaExternoIniciado = carregaExterno('consulta-pessoa', 'pessoa', 'modalConsultaPessoa', ModalPessoaExternoIniciado);
         });
 
         //Carrega dados e configurações da tabela externa de "consulta-pessoa" ao clicar na 
@@ -68,7 +68,7 @@ $(document).ready(async function () {
         if (currentModal === 'modalConsultaPessoa') {
             SelecionaRegistro('pescodigo', 'pesnome');
         } else if (currentModal === 'modalConsultaVeiculo') {
-            SelecionaRegistro('veicodigo', 'modcodigo');
+            SelecionaRegistro('veicodigo', 'veiano');
         }
     });
   
@@ -93,36 +93,57 @@ $(document).ready(async function () {
  */
 function trataDadosAluguel(data) {
     let source = [],
-            columns = [{data: "veicodigo"},
-                {data: "veiano"},
-                {data: "veicor"},
-                {data: "veikm"},
-                {data: "modcodigo"},
-                {data: "veivalordiaria"},
-                {data: "veisituacao"},
+            columns = [{data: "alucodigo"},
+                {data: "pescodigo"},
+                {data: "veicodigo"},
+                {data: "aluqtddiarias"},
+                {data: "aludataretirada"}
             ];
-    data.forEach(item => source.push(
-                {
-                    veicodigo: item.veicodigo,
-                    veiano: item.veiano,
-                    veicor: item.veicor,
-                    veikm: item.veikm,
-                    modcodigo: item.modcodigo,
-                    veivalordiaria: item.veivalordiaria,
-                    veisituacao: item.veisituacao
-                }
-        ));
+    data.forEach(item => 
+        source.push(
+            {
+                alucodigo: item.alucodigo,
+                pescodigo: item.pescodigo,
+                veicodigo: item.veicodigo,
+                aluqtddiarias: item.aluqtddiarias,
+                aludataretirada: item.aludataretirada
+            }
+        )
+    );
     return {source: source, columns: columns};
 }
-
-
 
 /**
  * Define os atributos dos dados que serão usados
  * @param object data
  * @returns object
  */
-function trataDadosaluguel(data) {
+function trataDadosPessoa(data) {
+    let source = [],
+            columns = [{data: "pescodigo"},
+                {data: "pesnome"},
+                {data: "pesemail"},
+                {data: "pestelefone"},
+                {data: "pescpfcnpj"},
+            ];
+    data.forEach(item => source.push(
+                {
+                    pescodigo: item.pescodigo,
+                    pesnome: item.pesnome,
+                    pesemail: item.pesemail,
+                    pestelefone: item.pestelefone,
+                    pescpfcnpj: item.pescpfcnpj,
+                }
+        ));
+    return {source: source, columns: columns};
+}
+
+/**
+ * Define os atributos dos dados que serão usados
+ * @param object data
+ * @returns object
+ */
+function trataDadosVeiculo(data) {
     let source = [],
             columns = [{data: "veicodigo"},
                 {data: "veiano"},
@@ -185,16 +206,17 @@ async function buscaDadosManutencao(acao, id) {
     try {
         result = await api.get('aluguel/' + id);
         aluguel = result.data;
-        result = await api.get('modelo/' + aluguel.modcodigo);
-        modelo = result.data;
-        $('#veicodigo').val(aluguel.veicodigo);
-        $('#veiano').val(aluguel.veiano);
-        $('#veicor').val(aluguel.veicor);
-        $('#veikm').val(aluguel.veikm);
-        $('#modcodigo').val(modelo.modcodigo);
-        $('#moddescricao').val(modelo.moddescricao);
-        $('#veivalordiaria').val(aluguel.veivalordiaria);
-        $('#veisituacao').val(aluguel.veisituacao);
+        result = await api.get('pessoa/' + aluguel.pescodigo);
+        pessoa = result.data;
+        result = await api.get('veiculo/' + aluguel.veicodigo);
+        veiculo = result.data;
+        $('#alucodigo').val(aluguel.alucodigo);
+        $('#aluqtddiarias').val(aluguel.aluqtddiarias);
+        $('#aludataretirada').val(aluguel.aludataretirada);
+        $('#pescodigo').val(pessoa.pescodigo);
+        $('#pesnome').val(pessoa.pesnome);
+        $('#veicodigo').val(veiculo.veicodigo);
+        $('#veiano').val(veiculo.veiano);
     } catch (err) {
         toastr['error'](Object.values(err.response.data.errors)[0]);
     }

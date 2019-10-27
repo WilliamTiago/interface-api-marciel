@@ -82,21 +82,17 @@ $(document).ready(async function () {
  * @param object data
  * @returns object
  */
-function trataDadosPessoa(data) {
+function trataDadosModelo(data) {
     let source = [],
-            columns = [{data: "pescodigo"},
-                {data: "pesnome"},
-                {data: "pesemail"},
-                {data: "pestelefone"},
-                {data: "pescpfcnpj"},
+            columns = [{data: "modcodigo"},
+                {data: "moddescricao"},
+                {data: "marcodigo"},
             ];
     data.forEach(item => source.push(
                 {
-                    pescodigo: item.pescodigo,
-                    pesnome: item.pesnome,
-                    pesemail: item.pesemail,
-                    pestelefone: item.pestelefone,
-                    pescpfcnpj: item.pescpfcnpj,
+                    modcodigo: item.modcodigo,
+                    moddescricao: item.moddescricao,
+                    marcodigo: item.marcodigo,
                 }
         ));
     return {source: source, columns: columns};
@@ -131,33 +127,6 @@ function trataDadosVeiculo(data) {
     return {source: source, columns: columns};
 }
 
-
-
-/**
- * Define os atributos dos dados que serão usados
- * @param object data
- * @returns object
- */
-function trataDadosAluguel(data) {
-    let source = [],
-            columns = [{data: "alucodigo"},
-                {data: "pescodigo"},
-                {data: "veicodigo"},
-                {data: "aluqtdiarias"},
-                {data: "aludataretirada"}
-            ];
-    data.forEach(item => source.push(
-                {
-                    alucodigo: item.alucodigo,
-                    pescodigo: item.pescodigo,
-                    veicodigo: item.veicodigo,
-                    aluqtdiarias: item.aluqtdiarias,
-                    aludataretirada: item.aludataretirada
-                }
-        ));
-    return {source: source, columns: columns};
-}
-
 /**
  * Busca dados para tela de manutenção
  * @param string acao
@@ -175,18 +144,22 @@ async function buscaDadosManutencao(acao, id) {
     } 
     try {
         result = await api.get('veiculo/' + id);
-        aluguel = result.data;
-        result = await api.get('modelo/' + aluguel.veicodigo);
         veiculo = result.data;
-        result = await api.get('modelo/' + aluguel.pescodigo);
-        pessoa = result.data;
-        $('#alucodigo').val(aluguel.alucodigo);
-        $('#pescodigo').val(aluguel.pescodigo);
-        $('#pesnome').val(pessoa.pesnome);
+        result = await api.get('modelo/' + veiculo.modcodigo);
+        modelo = result.data;
         $('#veicodigo').val(veiculo.veicodigo);
-        $('#modcodigo').val(veiculo.modcodigo);
-        $('#aluqtdiarias').val(aluguel.aluqtdiarias);
-        $('#aludataretirada').val(aluguel.aludataretirada);
+        $('#veiano').val(veiculo.veiano);
+        $('#veicor').val(veiculo.veicor);
+        $('#veikm').val(veiculo.veikm);
+        $('#veivalordiaria').val(veiculo.veivalordiaria);
+        Array.from($('#veisituacao')[0].options).forEach(item => {
+            if (item.value == veiculo.veisituacao) {
+                $(`select option[value='${item.value}']`).prop("selected", true);
+                return false;
+            }
+        })
+        $('#modcodigo').val(modelo.modcodigo);
+        $('#moddescricao').val(modelo.moddescricao);
     } catch (err) {
         toastr['error'](Object.values(err.response.data.errors)[0]);
     }

@@ -29,8 +29,13 @@
 
 <body id="page-top">
 
+  <div class="ring" id="animation">
+      Loading
+      <span></span>
+  </div>
+
   <!-- Page Wrapper -->
-  <div id="wrapper">
+  <div id="wrapper" style="display: none;">
 
     <!-- Sidebar -->
     <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
