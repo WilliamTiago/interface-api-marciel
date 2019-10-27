@@ -76,7 +76,7 @@ $(document).ready(async function () {
     $('#pescodigo, #veicodigo, #aluqtddiarias, #aludataretirada').attr("required", "true");
 
     //Define os campos como somente leitura
-    $('#pescodigo, #veicodigo').prop("readonly", true);
+    $('#pescodigo, #pesnome, #veicodigo, #veiano').prop("readonly", true);
     
     //// Fim do controle da tela de manutenção ////
 

@@ -33,7 +33,7 @@
             <div class="form-group row">
                 <label for="aludataretirada" class="col-sm-3 col-md-2 col-lg-2 col-xl-1 col-form-label-sm label-right">Data Retirada:</label>
                 <div class="col-sm-9 col-md-9 col-lg-7 col-xl-5">
-                    <input id="aludataretirada" name="aludataretirada" type="datetime" class="form-control" value="">
+                    <input id="aludataretirada" name="aludataretirada" type="date" class="form-control" value="">
                 </div>
             </div>
             <div class="form-group row">
