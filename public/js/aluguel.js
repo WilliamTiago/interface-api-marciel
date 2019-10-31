@@ -31,6 +31,9 @@ $(document).ready(async function () {
     }
     if (acaoManutencao != "show") {
 
+        //Esconde campo do valor total
+        $('.rowValorTotal').hide();
+
         //Carrega dados e configurações da tabela externa de "consulta-pessoa" ao clicar na 
         //"lupinha" de consulta pessoa
         $('#consultaPessoa').click(async function () {
@@ -201,6 +204,7 @@ async function buscaDadosManutencao(acao, id) {
         $(':input').prop("disabled", true);
         //Remove o botão de "confirmar"
         $('#confirmar').hide();
+        $('#valortotal').prop("disabled", true);
 
     } 
     try {
@@ -217,6 +221,7 @@ async function buscaDadosManutencao(acao, id) {
         $('#pesnome').val(pessoa.pesnome);
         $('#veicodigo').val(veiculo.veicodigo);
         $('#veiano').val(veiculo.veiano);
+        $('#valortotal').val('R$ ' + (aluguel.aluqtddiarias * veiculo.veivalordiaria) + '.00');
     } catch (err) {
         toastr['error'](Object.values(err.response.data.errors)[0]);
     }

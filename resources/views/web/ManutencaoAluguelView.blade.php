@@ -68,6 +68,12 @@
                     <input id="veiano" name="veiano" type="text" class="form-control input-small" value="">
                 </div>
             </div>
+            <div class="form-group row rowValorTotal">
+                <label for="valortotal" class="col-sm-3 col-md-2 col-lg-2 col-xl-1 col-form-label-sm label-right">Valor Total:</label>
+                <div class="col-sm-9 col-md-9 col-lg-7 col-xl-5">
+                    <input id="valortotal" name="valortotal" type="text" class="form-control" value="">
+                </div>
+            </div>
         </div>
         <div class="card-footer text-center">
             <button id="confirmar" type="submit" class="btn btn-primary btn-icon-split btn-sm">
