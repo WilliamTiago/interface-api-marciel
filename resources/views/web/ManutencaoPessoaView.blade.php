@@ -38,6 +38,18 @@
                 </div>
             </div>
             <div class="form-group row">
+                <label for="login" class="col-sm-3 col-md-2 col-lg-2 col-xl-1 col-form-label-sm label-right">Login:</label>
+                <div class="col-sm-9 col-md-9 col-lg-7 col-xl-5">
+                    <input id="login" name="login" type="text" class="form-control" value="">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="password" class="col-sm-3 col-md-2 col-lg-2 col-xl-1 col-form-label-sm label-right">Senha:</label>
+                <div class="col-sm-9 col-md-9 col-lg-7 col-xl-5">
+                    <input id="password" name="password" type="password" class="form-control" value="">
+                </div>
+            </div>
+            <div class="form-group row">
                 <label for="psotipo" class="col-sm-3 col-md-2 col-lg-2 col-xl-1 col-form-label-sm label-right">Tipo Pessoa:</label>
                 <div class="col-sm-2">
                     <select name="psotipo" id="psotipo" class="form-control pt-0">

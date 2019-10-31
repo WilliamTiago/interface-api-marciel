@@ -18,6 +18,26 @@ $(document).ready(function () {
     //Seta o tempo da tela de loading
     loading(2000);
 
+    $(document).on("click", "#logout", function () {    
+        let token = localStorage.getItem('token');    
+        axios({
+            method : 'post',
+            url    : 'http://127.0.0.1:8000/api/auth/logout',
+            headers: {
+                Authorization: `Bearer ${token}`, //Token de autenticação na API
+                Accept: 'application/json'
+            }
+        })
+        .then(response => {
+            localStorage.setItem('token', response.data.access_token);
+            window.location.href = 'http://127.0.0.1:8088/auth/logout';
+        }).catch(error => {
+            if(error.response.status == 401 || error.response.status == 404) {
+                toastr["error"]("Ops, algo de estranho aconteceu, entre em contato com o suporte para mais informações!");
+            }
+        });
+    });
+
     //// Inicio do controle dos botões de ação da consulta ////
 
     //Trata ações da consulta quando é selecionado um ou mais registros 
@@ -45,7 +65,7 @@ $(document).ready(function () {
     //// Inicio do controle dos modais ////
 
     //Fecha modal ao clicar em cancelar
-    $('#cancelar').click(function () {
+    $('.cancelar').click(function () {
         $('.modal').hide();
     });
 
@@ -285,6 +305,8 @@ function executaExclusao(tabela, rotaApi, rotaWEB) {
                 .rows('.selected')
                 .remove()
                 .draw();
+        //Atualiza botões da consulta
+        trataAcoesConsulta();
     }
 }
 

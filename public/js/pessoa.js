@@ -33,18 +33,18 @@ $(document).ready(async function () {
         $('#confirmar').prop('disabled', true);
         if (acaoManutencao == "edit") {
             urlApi = '/pessoa/' + $('#pescodigo').val();
-            campos = ['pesnome','pesemail','pestelefone','pescpfcnpj'];
+            campos = ['pesnome','pesemail','pestelefone','pescpfcnpj','login','password'];
             await executaAlteracao(campos, urlApi);
         } else if (acaoManutencao == "create") {
             urlApi = '/pessoa';
-            campos = ['pesnome','pesemail','pestelefone','pescpfcnpj'];
+            campos = ['pesnome','pesemail','pestelefone','pescpfcnpj','login','password'];
             await executaInsercao(campos, urlApi);
         }
         $('#confirmar').prop('disabled', false);
     });
     
     //Define os campos como obrigatório
-    $('#pesnome, #pescpfcnpj').attr("required", "true");
+    $('#pesnome, #pescpfcnpj, #login, #password').attr("required", "true");
 
     //Define por defaulr a mascara de CPF para o campo "psocpfcnpj"
     if(typeof $('#pescpfcnpj')[0] != "undefined"){
@@ -75,7 +75,7 @@ function trataDadosPessoa(data) {
                 {data: "pesnome"},
                 {data: "pesemail"},
                 {data: "pestelefone"},
-                {data: "pescpfcnpj"},
+                {data: "pescpfcnpj"}
             ];
     data.forEach(item => source.push(
                 {
@@ -83,7 +83,7 @@ function trataDadosPessoa(data) {
                     pesnome: item.pesnome,
                     pesemail: item.pesemail,
                     pestelefone: item.pestelefone,
-                    pescpfcnpj: item.pescpfcnpj,
+                    pescpfcnpj: item.pescpfcnpj
                 }
         ));
     return {source: source, columns: columns};
@@ -112,6 +112,8 @@ async function buscaDadosManutencao(acao, id) {
         $('#pesemail').val(pessoa.pesemail);
         $('#pestelefone').val(pessoa.pestelefone);
         $('#pescpfcnpj').val(pessoa.pescpfcnpj);
+        $('#login').val(pessoa.login);
+        $('#password').val(pessoa.password);
     } catch (err) {
         toastr['error'](Object.values(err.response.data.errors)[0]);
     }

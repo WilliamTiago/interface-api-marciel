@@ -1,4 +1,4 @@
-<div id="modalExcluir" class="modal">
+<div id="modalExcluir" class="modal modalApp">
 
 <div class="card mx-auto p-0 col-6 shadow modal-center">
     <div class="card-header">
@@ -15,12 +15,12 @@
             </span>
             <span class="text">Confirmar</span>
         </a>
-        <a href="#" id="excluirCancelar" class="btn btn-primary btn-icon-split btn-sm">
+        <button id="cancelar" class="btn btn-primary btn-icon-split btn-sm cancelar">
             <span class="icon text-white-50">
                 <i class="fas fa-times"></i>
             </span>
             <span class="text">Cancelar</span>
-        </a>
+        </button>
     </div>
 </div>
 </div>

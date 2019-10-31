@@ -1,4 +1,4 @@
-<div id="modalConsultaModelo" class="modal">
+<div id="modalConsultaModelo" class="modal modalApp">
     <div class="card shadow mb-4 modal-center">
         <div class="card-header py-3">
             <span class="close" >&times;</span>

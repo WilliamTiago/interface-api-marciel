@@ -10,7 +10,6 @@
 
         <link href="/template/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
         <link href="/template/css/sb-admin-2.min.css" rel="stylesheet">
-        <link href="/bootstrap/css/bootstrap.css" rel="stylesheet">
         <link href="/css/login.css" rel="stylesheet">
         <link href="/css/toastr.css" rel="stylesheet">
     </head>

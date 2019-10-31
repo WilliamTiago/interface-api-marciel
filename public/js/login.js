@@ -17,7 +17,7 @@ function validaLogin(dados) {
         data   : dados
     })
     .then(response => {
-        localStorage.setItem('token', response.data.token);
+        localStorage.setItem('token', response.data.access_token);
         window.location.href = 'http://127.0.0.1:8088/web/home';
     }).catch(error => {
         if(error.response.status == 401 || error.response.status == 404) {
