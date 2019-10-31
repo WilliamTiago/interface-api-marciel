@@ -43,6 +43,8 @@ Route::group([
     //Home
     Route::get(''    , 'HomeController@index')->where('route', 'index|home');
     Route::get('home', 'HomeController@index')->where('route', 'index|home');
+    //Login
+    Route::get('login', 'HomeController@index')->where('route', 'index|home');
     //Pessoa
     Route::get('pessoa'             , 'PessoaController@index')->name('pessoa.index');
     Route::get('pessoa/create'      , 'PessoaController@create')->name('pessoa.create');
