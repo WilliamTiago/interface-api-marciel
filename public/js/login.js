@@ -3,8 +3,8 @@ $(document).ready(function(){
         e.preventDefault();
         
         let dados = {
-            "usulogin": $('input[name=login').val(),
-            "ususenha": $('input[name=password]').val()
+            "login": $('input[name=login').val(),
+            "password": $('input[name=password]').val()
         };
         validaLogin(dados);
     });
@@ -13,7 +13,7 @@ $(document).ready(function(){
 function validaLogin(dados) {
     axios({
         method : 'post',
-        url    : 'http://127.0.0.1:8000/api/bobwaiter/v1/auth/login',
+        url    : 'http://127.0.0.1:8000/api/auth/login',
         data   : dados
     })
     .then(response => {
