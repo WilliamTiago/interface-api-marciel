@@ -1,6 +1,6 @@
 @extends('web/HomeView')
 
-@section('title', 'Consulta Usuario')
+@section('title', 'Consulta Pessoa')
 
 @section('stylesheets')
     
